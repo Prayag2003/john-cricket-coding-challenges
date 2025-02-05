@@ -1,1 +1,7 @@
-target
+/target
+**/*.rs.bk
+Cargo.lock
+shell.log
+.myshell_history
+.myshell_env
+.myshell_aliases
