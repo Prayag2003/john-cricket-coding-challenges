@@ -6,3 +6,13 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+regex = "1.5.0"
+ctrlc = "3.2.0"
+rustyline = "9.1.0"
+log = "0.4.14"
+fern = "0.6.0"
+dirs = "2.0.2"
+chrono = "0.4.19"
+nix = "0.20.0"
+shellwords = "1.1.0"
+lazy_static = "1.4.0"

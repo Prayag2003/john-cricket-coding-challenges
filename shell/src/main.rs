@@ -1,19 +1,27 @@
-use std::io::{self, Write};
+mod history;
+mod shell;
+mod commands;
+mod builtins;
+mod environment;
+mod alias;
+mod parser;
+mod signals;
+mod logger;
+mod completion;
 
-fn main() {
-    loop {
-        print!("ccsh> ");
-        io::stdout().flush().unwrap(); 
+use std::io;
+use shell::Shell;
+use std::error::Error;
 
-        // Read user input
-        let mut input = String::new();
-        io::stdin().read_line(&mut input).expect("Failed to read line");
-
-        let input = input.trim();
-        if input == "exit" {
-            break;
-        }
-        
-        println!("You entered: {}", input);
+fn main() -> io::Result<()> {
+    // Initialize logger
+    if let Err(e) = logger::init_logger() {
+        eprintln!("Failed to initialize logger: {}", e);
     }
+
+    // Create and run the shell
+    let mut shell = Shell::new()?;
+    shell.run()?;
+
+    Ok(())
 }
